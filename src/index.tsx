@@ -3,30 +3,43 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Frame from "./components/frame/Frame";
-import Offers from "./components/offers/Offers";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Frame from './components/frame/Frame';
+import Offers from './components/offers/Offers';
+import Payment from './components/payment/Payment';
+import Success from './components/payment/Success';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
 const router = createBrowserRouter([
-    {
-        path: "",
-        element: <Frame/>,
+  {
+    path: '',
+    element: <Frame />,
+    children: [
+      {
+        path: '',
+        element: <Offers />,
+      },
+      {
+        path: 'payment',
+
         children: [
-            {
-                path: "",
-                element: <Offers/>,
-            },
-        ]
-    },
+          { index: true, element: <Payment /> },
+          {
+            path: 'success',
+            element: <Success />,
+          },
+        ],
+      },
+    ],
+  },
 ]);
 
 root.render(
   <React.StrictMode>
-      <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
