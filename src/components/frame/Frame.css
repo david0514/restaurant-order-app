@@ -1,0 +1,13 @@
+.frame-container {
+  display: grid;
+
+  grid-template-areas: "top-bar" "frame-content";
+  grid-template-rows: auto 1fr;
+  height: 100%;
+}
+
+.frame-content {
+  grid-area: frame-content;
+  padding-left: calc(env(safe-area-inset-left) + var(--menu-closed-width));
+  padding-right: env(safe-area-inset-left);
+}

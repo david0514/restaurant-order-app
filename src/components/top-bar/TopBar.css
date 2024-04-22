@@ -1,0 +1,43 @@
+.top-bar-container {
+    grid-area: top-bar;
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+
+    height: var(--top-bar-height);
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+
+    background-color: var(--primary-color);
+    color: var(--text-light-color);
+}
+
+.top-bar-container > div{
+    display: flex;
+    align-items: center;
+}
+
+.top-bar-right-part {
+    justify-self: end;
+}
+
+.login-icon, .logout-icon, .user-icon {
+    height: var(--top-bar-height);
+    width: var(--top-bar-height);
+    padding: 0.25rem;
+    margin-right: 0.5rem;
+    color: var(--text-light-color);
+    fill: var(--text-light-color);
+    stroke: var(--text-light-color);;
+}
+
+.restaurant-name {
+    margin-left: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.restaurant-logo {
+    height: var(--top-bar-height);
+    width: var(--top-bar-height);
+    padding: 0.5rem;
+}
