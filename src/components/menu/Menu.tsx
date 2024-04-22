@@ -40,10 +40,7 @@ function Menu() {
         </div>
       </div>
 
-      <div
-        className="menu-line"
-        onClick={() => navigate('/order', { replace: true })}
-      >
+      <div className="menu-line">
         <img
           style={{ padding: '0.25rem' }}
           className="menu-item-icon"
@@ -57,7 +54,7 @@ function Menu() {
 
       <div
         className="menu-line"
-        onClick={() => navigate('/', { replace: true })}
+        onClick={() => {navigate("/", {replace: true});setIsOpened(false)}}
       >
         <img
           style={{ padding: '0.25rem' }}
@@ -70,7 +67,7 @@ function Menu() {
         </div>
       </div>
 
-      <div className="menu-line">
+      <div className="menu-line"  onClick={() => {navigate("/foods", {replace: true});setIsOpened(false)}}>
         <img
           style={{ padding: '0.1rem' }}
           className="menu-item-icon"

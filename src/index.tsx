@@ -8,6 +8,7 @@ import Frame from './components/frame/Frame';
 import Offers from './components/offers/Offers';
 import Payment from './components/payment/Payment';
 import Success from './components/payment/Success';
+import Foods from "./components/foods/Foods";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: '',
         element: <Offers />,
+      },
+      {
+        path: 'foods',
+        element: <Foods />,
       },
       {
         path: 'payment',

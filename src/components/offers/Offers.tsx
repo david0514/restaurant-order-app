@@ -16,10 +16,11 @@ function Offers() {
                         <span className="name">Mindenes Házi Hamburger</span>
                         <span className="description">Marha pogácsa, paradicsom, saláta hagyma, uborka, szósz</span>
                         <span className="rate">
-                      {[true, true, true, false, false].map((v) => <img className="star"
-                                                                        src={v ? "/common/star.svg" : "/common/star-outline.svg"}
-                                                                        alt=""/>)}
-                  </span>
+                          <img src="/common/glukoz-ikon.svg" alt=""/>
+                          <img src="/common/laktoz-ikon.svg" alt=""/>
+                            <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>
+                            <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>
+                        </span>
                         <button className="add-button">+</button>
                     </div>
                 )
