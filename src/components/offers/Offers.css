@@ -5,13 +5,13 @@
   grid-template-rows: auto 1fr;
 }
 
-.title{
+.title {
   font-size: 1.5rem;
   text-align: center;
   margin: 0.5rem;
 }
 
-.subtitle{
+.subtitle {
   text-align: center;
   margin: 0.5rem;
 }
@@ -36,7 +36,7 @@
   display: grid;
   grid-template-columns: 1fr var(--add-button-width);
   grid-template-rows: 1lh max-content 2lh 3lh var(--add-button-width);
-  grid-template-areas: "price price" "image image" "name name" "description description" "rate add-button";
+  grid-template-areas: 'price price' 'image image' 'name name' 'description description' 'rate add-button';
   gap: 0.25rem;
   text-align: center;
 }
@@ -78,7 +78,7 @@
   margin: 0 0.25rem;
 }
 
-.offers-container .rate .star{
+.offers-container .rate .star {
   width: 0.75lh;
   height: 0.75lh;
 }
