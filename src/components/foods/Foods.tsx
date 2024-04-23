@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './Foods.css';
+import ItemNumberDialog from "../item-number-dialog/ItemNumberDialog";
 
 function Foods() {
 
@@ -12,6 +13,15 @@ function Foods() {
     })
 
     const [isAlergensOpen, setIsAlergensOpen] = useState(false)
+    const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState(false)
+
+    function handleDialogClose(){
+        setIsItemNumberDialogOpen(false)
+    }
+
+    function handleDialogOpen(){
+        setIsItemNumberDialogOpen(true)
+    }
 
     return (
         <div className="foods-container">
@@ -113,11 +123,12 @@ function Foods() {
                             <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>
                             <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>
                         </span>
-                        <button className="add-button">+</button>
+                        <button className="add-button" onClick={handleDialogOpen}>+</button>
                     </div>
                 )
                 }
             </div>
+            {isItemNumberDialogOpen && <ItemNumberDialog onClose={handleDialogClose}/>}
         </div>
     );
 }

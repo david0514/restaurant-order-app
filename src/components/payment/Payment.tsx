@@ -220,6 +220,8 @@ function Payment() {
           style={{ display: 'grid', gridRow: 2, gridColumn: 3 }}
         >
           <button
+              className="filled-button filled-button-dark"
+              style={{fontSize:"1rem"}}
             onClick={() => navigate('/payment/success', { replace: true })}
           >
             Fizetés

@@ -1,7 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Offers.css';
+import ItemNumberDialog from "../item-number-dialog/ItemNumberDialog";
 
 function Offers() {
+
+    const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState(false)
+
+    function handleDialogClose(){
+        setIsItemNumberDialogOpen(false)
+    }
+
+    function handleDialogOpen(){
+        setIsItemNumberDialogOpen(true)
+    }
+
     return (
         <div className="offers-container">
             <div className="header">
@@ -21,11 +33,12 @@ function Offers() {
                             <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>
                             <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>
                         </span>
-                        <button className="add-button">+</button>
+                        <button className="add-button" onClick={handleDialogOpen}>+</button>
                     </div>
                 )
                 }
             </div>
+            {isItemNumberDialogOpen && <ItemNumberDialog onClose={handleDialogClose}/>}
         </div>
     );
 }

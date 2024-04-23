@@ -40,7 +40,7 @@ function Menu() {
         </div>
       </div>
 
-      <div className="menu-line">
+      <div className="menu-line" onClick={() => navigate('/order', { replace: true })}>
         <img
           style={{ padding: '0.25rem' }}
           className="menu-item-icon"
