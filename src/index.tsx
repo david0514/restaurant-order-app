@@ -8,10 +8,12 @@ import Frame from './components/frame/Frame';
 import Offers from './components/offers/Offers';
 import Payment from './components/payment/Payment';
 import Success from './components/payment/Success';
-import Foods from "./components/foods/Foods";
-import Order from "./components/order/Order";
-import {store} from "./app/store";
-import {Provider} from "react-redux";
+import Foods from './components/foods/Foods';
+import Order from './components/order/Order';
+import { store } from './app/store';
+import { Provider } from 'react-redux';
+import Reserve from './components/reserve/Reserve';
+import Waiter from './components/waiter/Waiter';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -45,6 +47,14 @@ const router = createBrowserRouter([
           },
         ],
       },
+      {
+        path: 'reserve',
+        element: <Reserve />,
+      },
+      {
+        path: 'waiter',
+        element: <Waiter />,
+      },
     ],
   },
 ]);
@@ -52,7 +62,7 @@ const router = createBrowserRouter([
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
