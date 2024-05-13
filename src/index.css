@@ -94,6 +94,65 @@ code {
     background-color: var(--primary-color);
 }
 
+
+/* Title */
+
+.title {
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0.5rem;
+}
+
+.subtitle {
+    text-align: center;
+    margin: 0.25rem 0.5rem 0.5rem 0.5rem;
+}
+
+/* Number Picker */
+
+.item-number-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-number-container input {
+    width: 2.7rem;
+    padding: 0.4rem;
+    border: none;
+    background-color: var(--card-background-color);
+    border-radius: 0.5rem;
+}
+
+.item-number-container input::-webkit-inner-spin-button,
+.item-number-container input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.item-number-container button {
+    margin: 0 0.5rem;
+
+    width: 2rem;
+    height: 2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 3rem;
+
+    font-weight: bold;
+    font-size: 1rem;
+
+    color: var(--text-light-color);
+    background-color: var(--primary-color);
+}
+
+
+
 /*.filled-button-light:hover {*/
 /*    box-shadow: 0 8px 32px 0 hsla(0, 0%, 100%, 0.1);*/
 /*}*/

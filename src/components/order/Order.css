@@ -1,2 +1,8 @@
 .order-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-template-columns: 1fr;
+    padding: 0 0.5rem 0.5rem 0.5rem;
+    gap: 0.5rem;
 }

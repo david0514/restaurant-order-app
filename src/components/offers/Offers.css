@@ -1,101 +1,137 @@
 .offers-container {
-  height: calc(100dvh - var(--top-bar-height));
-  overflow: auto;
-  display: grid;
-  grid-template-rows: auto 1fr;
-}
-
-.title {
-  font-size: 1.5rem;
-  text-align: center;
-  margin: 0.5rem;
-}
-
-.subtitle {
-  text-align: center;
-  margin: 0.5rem;
+    height: calc(100dvh - var(--top-bar-height));
+    overflow: auto;
+    display: grid;
+    grid-template-rows: auto 1fr;
 }
 
 .card-container {
-  margin: 0.5rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
+    height: max-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin: 0.5rem;
+}
+
+@media screen and (min-width: 26rem) {
+    .card-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 39rem) {
+    .card-container {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 52rem) {
+    .card-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 65rem) {
+    .card-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+}
+
+@media screen and (min-width: 78rem) {
+    .card-container {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
 }
 
 .card {
-  /*aspect-ratio: 0.5;*/
-  background-color: var(--card-background-color);
-  border-radius: 0.5rem;
+    /*aspect-ratio: 0.5;*/
+    background-color: var(--card-background-color);
+    border-radius: 0.5rem;
 }
 
 .offers-container .card {
-  font-size: 0.875rem;
-  --add-button-width: 2.5rem;
+    font-size: 0.875rem;
+    --add-button-width: 2.5rem;
 
-  display: grid;
-  grid-template-columns: 1fr var(--add-button-width);
-  grid-template-rows: 1lh max-content 2lh 3lh var(--add-button-width);
-  grid-template-areas: 'price price' 'image image' 'name name' 'description description' 'rate add-button';
-  gap: 0.25rem;
-  text-align: center;
+    display: grid;
+    grid-template-columns: 1fr calc(var(--add-button-width) + 1rem);
+    grid-template-rows: 1.4lh max-content 2lh 3lh calc(var(--add-button-width) + 1rem);
+    grid-template-areas: 'price price' 'image image' 'name name' 'description description' 'rate add-button';
+    gap: 0.25rem;
+    text-align: center;
 }
 
 .offers-container .image {
-  grid-area: image;
-  width: 100%;
-  aspect-ratio: 4/3;
-  justify-self: center;
-  object-fit: contain;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-radius: 0.5rem;
+    grid-area: image;
+    width: 100%;
+    aspect-ratio: 4/3;
+    justify-self: center;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 0.5rem;
 }
 
 .offers-container .price {
-  grid-area: price;
-  margin: 0 0.25rem;
+    grid-area: price;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .offers-container .name {
-  grid-area: name;
-  margin: 0 0.25rem;
-  justify-self: center;
-  font-weight: bold;
+    grid-area: name;
+    margin: 0 0.25rem;
+    justify-self: center;
+    font-weight: bold;
 }
 
 .offers-container .description {
-  grid-area: description;
-  margin: 0 0.25rem;
-  justify-self: center;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  hyphens: auto;
+    grid-area: description;
+    margin: 0 0.25rem;
+    justify-self: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    hyphens: auto;
 }
 
 .offers-container .rate {
-  grid-area: rate;
-  align-content: center;
-  text-align: left;
-  margin: 0 0.25rem;
-  overflow: hidden;
+    grid-area: rate;
+    align-self: center;
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+
+    margin: 0 0 0 0.5rem;
+    overflow: hidden;
 }
 
 .offers-container .rate img {
-  width: 1.5lh;
-  height: 1.5lh;
-  margin: -0.25rem;
+    width: 1.5lh;
+    height: 1.5lh;
+    margin: 0 -0.25rem;
 }
 
-.offers-container .add-button {
-  font-weight: bold;
-  font-size: 1.25rem;
-  grid-area: add-button;
-  margin: 0;
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 3rem;
-  padding: 0.25rem;
-  border: none;
-  color: var(--text-light-color);
-  background-color: var(--primary-color);
+.offers-container .card-container .add-button {
+    grid-area: add-button;
+    justify-self: center;
+    align-self: center;
+
+    width: var(--add-button-width);
+    height: var(--add-button-width);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 3rem;
+    padding: 0.25rem;
+
+    font-weight: bold;
+    font-size: 1.25rem;
+
+    color: var(--text-light-color);
+    background-color: var(--primary-color);
 }

@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import './Foods.css';
 import ItemNumberDialog from "../item-number-dialog/ItemNumberDialog";
+import {itemsData} from "../../itemsData";
+import {Item} from "../../features/cartSlice";
 
 function Foods() {
 
@@ -12,16 +14,31 @@ function Foods() {
         ital: false,
     })
 
+    const [selectedAlergens, setSelectedAlergens] = useState({
+        gluten: true,
+        lactose: true,
+        peanut: true,
+        soy: true,
+    })
+
     const [isAlergensOpen, setIsAlergensOpen] = useState(false)
-    const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState(false)
+    const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState<Item | undefined>(undefined)
 
     function handleDialogClose(){
-        setIsItemNumberDialogOpen(false)
+        setIsItemNumberDialogOpen(undefined)
     }
 
-    function handleDialogOpen(){
-        setIsItemNumberDialogOpen(true)
+    function handleDialogOpen(item: Item){
+        setIsItemNumberDialogOpen(item)
     }
+
+    const speak = (text: string) => {
+        const utter = new SpeechSynthesisUtterance();
+        utter.text = text;
+        utter.lang = "hu"
+        utter.rate=1
+        speechSynthesis.speak(utter);
+    };
 
     return (
         <div className="foods-container">
@@ -92,43 +109,70 @@ function Foods() {
                     </div>
                     <div className="dropdown">
                         <div>
-                            <input id="gluten-input" type="checkbox"/>
+                            <input id="gluten-input" type="checkbox" checked={selectedAlergens.gluten} onClick={() => setSelectedAlergens({
+                                ...selectedAlergens,
+                                gluten: !selectedAlergens.gluten
+                            })}/>
                             <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}>Glutén</label>
                         </div>
                         <div>
-                            <input id="gluten-input" type="checkbox"/>
-                            <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}>Laktóz</label>
+                            <input id="laktoz-input" type="checkbox" checked={selectedAlergens.lactose} onClick={() => setSelectedAlergens({
+                                ...selectedAlergens,
+                                lactose: !selectedAlergens.lactose
+                            })}/>
+                            <label htmlFor="laktoz-input" style={{marginLeft: "0.5rem"}}>Laktóz</label>
                         </div>
                         <div>
-                            <input id="gluten-input" type="checkbox"/>
-                            <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}>Mogyoró</label>
+                            <input id="mogyoro-input" type="checkbox"  checked={selectedAlergens.peanut} onClick={() => setSelectedAlergens({
+                                       ...selectedAlergens,
+                                       peanut: !selectedAlergens.peanut
+                                   })}/>
+                            <label htmlFor="mogyoro-input" style={{marginLeft: "0.5rem"}}>Mogyoró</label>
                         </div>
                         <div>
-                            <input id="gluten-input" type="checkbox"/>
-                            <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}>Szója</label>
+                            <input id="szoja-input" type="checkbox" checked={selectedAlergens.soy} onClick={() => setSelectedAlergens({
+                                ...selectedAlergens,
+                                soy: !selectedAlergens.soy
+                            })}/>
+                            <label htmlFor="szoja-input" style={{marginLeft: "0.5rem"}}>Szója</label>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="card-container">
-                {new Array(7).fill(1).map(() =>
-                    <div className="card">
-                        <span className="price">1599 Ft</span>
-                        <img className="image" src="/test-images/hamburger.jpg" alt=""/>
-                        <span className="name">Mindenes Házi Hamburger</span>
-                        <span className="description">Marha pogácsa, paradicsom, saláta hagyma, uborka, szósz</span>
+                {itemsData.filter(item=> {
+                    return !(
+                        (selectedFoodTypes.eloetel && !item.tags.includes("előétel")) ||
+                        (selectedFoodTypes.leves && !item.tags.includes("leves")) ||
+                        (selectedFoodTypes.foetel && !item.tags.includes("főétel")) ||
+                        (selectedFoodTypes.desszert && !item.tags.includes("desszert")) ||
+                        (selectedFoodTypes.ital && !item.tags.includes("ital")) ||
+                        (!selectedAlergens.gluten && item.contains.includes("GLUTEN")) ||
+                        (!selectedAlergens.lactose && item.contains.includes("LACTOSE")) ||
+                        (!selectedAlergens.peanut && item.contains.includes("PEANUT")) ||
+                        (!selectedAlergens.soy && item.contains.includes("SOY"))
+                    );
+                }).map((item) =>
+                    <div key={item.name} className="card">
+                        <div className="price">
+                            <img style={{width: "1.2lh", height: "1.2lh", marginRight:"0.2lh", visibility: "hidden"}} src="/common/sound-icon.svg" alt=""/>
+                            <span>{item.price} {item.currency === "HUF" ? "Ft" : ""}</span>
+                            <img style={{width: "1.2lh", height: "1.2lh", marginRight:"0.2lh"}} src="/common/sound-icon.svg" alt="" onClick={()=>speak(item.shortDescription ?? "")}/>
+                        </div>
+                        <img className="image" src={item.imageUrl} alt=""/>
+                        <span className="name">{item.name}</span>
+                        <span className="description">{item.shortDescription}</span>
                         <span className="rate">
-                            <img src="/common/glukoz-ikon.svg" alt=""/>
-                            <img src="/common/laktoz-ikon.svg" alt=""/>
-                            <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>
-                            <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>
+                            {item.contains.includes("GLUTEN") && <img src="/common/gluten-ikon.svg" style={{padding: "0.15rem"}} alt=""/>}
+                            {item.contains.includes("LACTOSE") && <img src="/common/laktoz-ikon.svg" alt=""/>}
+                            {item.contains.includes("PEANUT") && <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>}
+                            {item.contains.includes("SOY") && <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>}
                         </span>
-                        <button className="add-button" onClick={handleDialogOpen}>+</button>
+                        <button className="add-button" onClick={()=>handleDialogOpen(item)}>+</button>
                     </div>
-                )
-                }
+                )}
             </div>
-            {isItemNumberDialogOpen && <ItemNumberDialog onClose={handleDialogClose}/>}
+            {isItemNumberDialogOpen && <ItemNumberDialog selectedItem={isItemNumberDialogOpen} onClose={handleDialogClose}/>}
         </div>
     );
 }

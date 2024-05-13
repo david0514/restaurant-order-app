@@ -6,14 +6,14 @@
   overflow: hidden;
 }
 
-.title,
-.subtitle {
+.payment-container .title,
+.payment-container .subtitle {
   font-size: 1.5rem;
   text-align: center;
   margin: 0.5rem;
 }
 
-.subtitle {
+.payment-container .subtitle {
   font-size: 1rem;
 }
 

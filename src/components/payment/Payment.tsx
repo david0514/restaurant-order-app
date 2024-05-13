@@ -4,6 +4,7 @@ import StarRating from '../starRating/StarRating';
 import { FaRegCreditCard } from 'react-icons/fa6';
 import { BsCash } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import {useAppSelector} from "../../app/hooks";
 
 type PaymentMethod = 'keszpenz' | 'kartya' | 'szepkartya' | 'paypal';
 
@@ -33,10 +34,12 @@ function Payment() {
     { id: 20, name: 'Mojito', amount: 2, price: '1200' },
   ];
 
+  const cart = useAppSelector((state) => state.cart)
+
   const [tipPercentage, setTipPercentage] = useState(0);
 
-  const totalPrice = products.reduce(
-    (acc, product) => acc + parseInt(product.price),
+  const totalPrice = cart.cart.reduce(
+    (acc, product) => acc + (product.item.price * product.number),
     0
   );
   const serviceFee = totalPrice * 0.1;
@@ -66,7 +69,7 @@ function Payment() {
     <div className="payment-container">
       <div className="header">
         <div className="title">Rendelésösszesítő</div>
-        <div className="subtitle">Kérjük értékelje rendelését!</div>
+        {/*<div className="subtitle">Kérjük értékelje rendelését!</div>*/}
       </div>
 
       <div className="products-list-header">
@@ -78,11 +81,11 @@ function Payment() {
         </div>
       </div>
       <div className="products-list">
-        {products.map((product) => (
-          <div key={product.id} className="product-row">
-            <div className="product-column">{product.name}</div>
-            <div className="product-column">{product.amount} db</div>
-            <div className="product-column">{product.price} Ft</div>
+        {cart.cart.map((product) => (
+          <div key={product.item.name} className="product-row">
+            <div className="product-column">{product.item.name}</div>
+            <div className="product-column">{product.number} db</div>
+            <div className="product-column">{product.item.price * product.number} Ft</div>
             <div className="product-column">
               <img
                 className="rate-button"

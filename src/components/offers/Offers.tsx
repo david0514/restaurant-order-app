@@ -1,18 +1,28 @@
 import React, {useState} from 'react';
 import './Offers.css';
 import ItemNumberDialog from "../item-number-dialog/ItemNumberDialog";
+import {itemsData} from "../../itemsData";
+import {Item} from "../../features/cartSlice";
 
 function Offers() {
 
-    const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState(false)
+    const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState<Item | undefined>(undefined)
 
-    function handleDialogClose(){
-        setIsItemNumberDialogOpen(false)
+    function handleDialogClose() {
+        setIsItemNumberDialogOpen(undefined)
     }
 
-    function handleDialogOpen(){
-        setIsItemNumberDialogOpen(true)
+    function handleDialogOpen(item: Item) {
+        setIsItemNumberDialogOpen(item)
     }
+
+    const speak = (text: string) => {
+        const utter = new SpeechSynthesisUtterance();
+        utter.text = text;
+        utter.lang = "hu"
+        utter.rate=1
+        speechSynthesis.speak(utter);
+    };
 
     return (
         <div className="offers-container">
@@ -21,24 +31,31 @@ function Offers() {
                 <div className="subtitle">Válasszon kedvező ajánlataink közül!</div>
             </div>
             <div className="card-container">
-                {new Array(7).fill(1).map(() =>
-                    <div className="card">
-                        <span className="price">1599 Ft</span>
-                        <img className="image" src="/test-images/hamburger.jpg" alt=""/>
-                        <span className="name">Mindenes Házi Hamburger</span>
-                        <span className="description">Marha pogácsa, paradicsom, saláta hagyma, uborka, szósz</span>
+                {itemsData.map((item) =>
+                    <div key={item.name} className="card">
+                        <div className="price">
+                            <img style={{width: "1.2lh", height: "1.2lh", marginRight: "0.2lh", visibility: "hidden"}}
+                                 src="/common/sound-icon.svg" alt=""/>
+                            <span>{item.price} {item.currency === "HUF" ? "Ft" : ""}</span>
+                            <img style={{width: "1.2lh", height: "1.2lh", marginRight: "0.2lh"}}
+                                 src="/common/sound-icon.svg" alt=""
+                                 onClick={() => speak(item.shortDescription ?? "")}/>
+                        </div>
+                        <img className="image" src={item.imageUrl} alt=""/>
+                        <span className="name">{item.name}</span>
+                        <span className="description">{item.shortDescription}</span>
                         <span className="rate">
-                          <img src="/common/glukoz-ikon.svg" alt=""/>
-                          <img src="/common/laktoz-ikon.svg" alt=""/>
-                            <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>
-                            <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>
+                            {item.contains.includes("GLUTEN") &&
+                                <img src="/common/gluten-ikon.svg" style={{padding: "0.15rem"}} alt=""/>}
+                            {item.contains.includes("LACTOSE") && <img src="/common/laktoz-ikon.svg" alt=""/>}
+                            {item.contains.includes("PEANUT") && <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>}
+                            {item.contains.includes("SOY") && <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>}
                         </span>
-                        <button className="add-button" onClick={handleDialogOpen}>+</button>
+                        <button className="add-button" onClick={()=>handleDialogOpen(item)}>+</button>
                     </div>
-                )
-                }
+                )}
             </div>
-            {isItemNumberDialogOpen && <ItemNumberDialog onClose={handleDialogClose}/>}
+            {isItemNumberDialogOpen && <ItemNumberDialog selectedItem={isItemNumberDialogOpen} onClose={handleDialogClose}/>}
         </div>
     );
 }
