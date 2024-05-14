@@ -1,5 +1,4 @@
 .foods-container {
-    position: relative;
     height: calc(100dvh - var(--top-bar-height));
     overflow: auto;
     display: grid;
@@ -7,6 +6,7 @@
 }
 
 .food-types-container {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -39,6 +39,7 @@
 
 .food-types-container .sort-dropdown{
     position: absolute;
+    z-index: 5;
     border-radius: 0.5rem;
     background-color: hsla(36, 34%, 90%, 0.9);
     box-shadow: 0 8px 32px 0 hsla(0, 0%, 0%, 0.2);
@@ -50,7 +51,7 @@
 }
 
 .food-types-container .sort-dropdown.open {
-    height: calc(6lh + (12 * 0.4rem));
+    height: calc(4lh + (8 * 0.4rem));
 }
 
 .food-types-container .sort-dropdown div.selected {

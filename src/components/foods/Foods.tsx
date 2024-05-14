@@ -70,7 +70,7 @@ function Foods() {
                         </button>
                     </div>
                     <div className="sort">
-                        <img src="/foods/sort-icon.svg" onClick={()=>setIsSortOpen((prevState)=>!prevState)}></img>
+                        <img src="/foods/sort-icon.svg" alt="" onClick={()=>setIsSortOpen((prevState)=>!prevState)}></img>
                         <div className={isSortOpen ? "sort-dropdown open" : "sort-dropdown"}>
                             <div onClick={()=>{setSort("name-asc"); setIsSortOpen(false)}}  className={sort==="name-asc" ? "selected" : ""}>Név - növekvő</div>
                             <div onClick={()=>{setSort("name-desc"); setIsSortOpen(false)}}  className={sort==="name-desc" ? "selected" : ""}>Név - csökkenő</div>
