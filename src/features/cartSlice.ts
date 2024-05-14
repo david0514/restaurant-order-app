@@ -12,7 +12,7 @@ export interface Item {
 }
 
 export interface CartState {
-    cart: {number: number, item: Item}[]
+    cart: {number: number, ration: "kis adag" | "normál adag", item: Item}[]
 }
 
 const initialState: CartState = {
@@ -23,32 +23,29 @@ const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        addCartItem(state, action: PayloadAction<{number?: number, item: Item}>) {
-            const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name)
+        addCartItem(state, action: PayloadAction<{number?: number, ration: "kis adag" | "normál adag", item: Item}>) {
+            const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name && cartItem.ration === action.payload.ration)
             if (selectedCartItem !== undefined) {
                 selectedCartItem.number += action.payload.number !== undefined ? action.payload.number : 1
             } else {
-                state.cart.push({number: action.payload.number !== undefined ? action.payload.number : 1, item: action.payload.item})
+                state.cart.push({number: action.payload.number !== undefined ? action.payload.number : 1, ration: action.payload.ration,  item: action.payload.item})
             }
         },
-        removeCartItem(state, action: PayloadAction<Item>) {
-            const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.name)
+        removeCartItem(state, action: PayloadAction<{item: Item, ration: "kis adag" | "normál adag"}>) {
+            const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name && cartItem.ration === action.payload.ration)
             if (selectedCartItem !== undefined) {
                 selectedCartItem.number--
                 if (selectedCartItem.number <= 0) {
-                    state.cart = state.cart.filter((cartItem) => cartItem.item.name !== selectedCartItem.item.name)
+                    state.cart = state.cart.filter((cartItem) => cartItem.item.name !== selectedCartItem.item.name || cartItem.ration !== selectedCartItem.ration)
                 }
-            } else {
-                state.cart.push({number: 1, item: action.payload})
             }
         },
-        setCartItemNumber(state, action: PayloadAction<{number: number, item: Item}>) {
-            const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name)
+        setCartItemNumber(state, action: PayloadAction<{number: number, ration: "kis adag" | "normál adag", item: Item}>) {
+            const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name && cartItem.ration === action.payload.ration)
             if (selectedCartItem !== undefined) {
                 selectedCartItem.number = action.payload.number
                 if (action.payload.number <= 0) {
-                    console.log(action.payload.number)
-                    state.cart = state.cart.filter((cartItem) => cartItem.item.name !== selectedCartItem.item.name)
+                    state.cart = state.cart.filter((cartItem) => cartItem.item.name !== selectedCartItem.item.name || cartItem.ration !== selectedCartItem.ration)
                 }
             }
         },

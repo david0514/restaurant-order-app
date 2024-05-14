@@ -77,22 +77,22 @@ function Payment() {
           <div className="product-column"></div>
           <div className="product-column"></div>
           <div className="product-column"></div>
-          <div className="product-column">Értékelés</div>
+          {/*<div className="product-column">Értékelés</div>*/}
         </div>
       </div>
       <div className="products-list">
         {cart.cart.map((product) => (
           <div key={product.item.name} className="product-row">
-            <div className="product-column">{product.item.name}</div>
+            <div className="product-column">{product.ration === "kis adag" ? "Kis adag" : "Normál adag"} - {product.item.name}</div>
             <div className="product-column">{product.number} db</div>
             <div className="product-column">{product.item.price * product.number} Ft</div>
-            <div className="product-column">
-              <img
-                className="rate-button"
-                src={'/common/star-outline.svg'}
-                alt="Rate"
-              />
-            </div>
+            {/*<div className="product-column">*/}
+            {/*  <img*/}
+            {/*    className="rate-button"*/}
+            {/*    src={'/common/star-outline.svg'}*/}
+            {/*    alt="Rate"*/}
+            {/*  />*/}
+            {/*</div>*/}
           </div>
         ))}
       </div>
@@ -101,7 +101,7 @@ function Payment() {
           <div className="product-column">Szervízdíj</div>
           <div className="product-column">10%</div>
           <div className="product-column">{serviceFee} Ft</div>
-          <div className="product-column"></div>
+          {/*<div className="product-column"></div>*/}
         </div>
         <div className="horizontal-divider"></div>
 
@@ -118,7 +118,7 @@ function Payment() {
           <div className="product-column" style={{ whiteSpace: 'nowrap' }}>
             {totalTip.toFixed(0)} Ft
           </div>
-          <div className="product-column"></div>
+          {/*<div className="product-column"></div>*/}
         </div>
 
         <div className="product-row total-price-row">
@@ -127,7 +127,7 @@ function Payment() {
           <div className="product-column" style={{ whiteSpace: 'nowrap' }}>
             {totalPayable.toFixed(0)} Ft
           </div>
-          <div className="product-column"></div>
+          {/*<div className="product-column"></div>*/}
         </div>
       </div>
       <div className="header">

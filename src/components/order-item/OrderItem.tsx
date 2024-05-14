@@ -3,7 +3,7 @@ import './OrderItem.css';
 import {useAppDispatch} from "../../app/hooks";
 import {addCartItem, Item, removeCartItem, setCartItemNumber} from "../../features/cartSlice";
 
-function OrderItem(params: { cartItem: { number: number, item: Item } }) {
+function OrderItem(params: { cartItem: { number: number, ration: "kis adag" | "normál adag", item: Item } }) {
     const dispatch = useAppDispatch()
 
 
@@ -11,11 +11,11 @@ function OrderItem(params: { cartItem: { number: number, item: Item } }) {
 
         if (typeof event.target.value === 'number') {
             console.log("lefut")
-            dispatch(setCartItemNumber({number: event.target.value, item: params.cartItem.item}))
+            dispatch(setCartItemNumber({number: event.target.value, ration: params.cartItem.ration, item: params.cartItem.item}))
         }
         if (typeof event.target.value === 'string' && !isNaN(parseInt(event.target.value))) {
             console.log("lefut")
-            dispatch(setCartItemNumber({number: parseInt(event.target.value), item: params.cartItem.item}))
+            dispatch(setCartItemNumber({number: parseInt(event.target.value), ration: params.cartItem.ration, item: params.cartItem.item}))
         }
 
     }
@@ -24,14 +24,14 @@ function OrderItem(params: { cartItem: { number: number, item: Item } }) {
         <div className="order-item-container">
             <div>
             <div className="item-number-container">
-                <button style={{margin:"0.25rem"}} onClick={() => dispatch(removeCartItem(params.cartItem.item))}>–
+                <button style={{margin:"0.25rem"}} onClick={() => dispatch(removeCartItem({ration: params.cartItem.ration, item: params.cartItem.item}))}>–
                 </button>
                 <input style={{backgroundColor:"rgba(255, 255, 255, 0.5)"}} type="number" value={params.cartItem.number} onChange={handleNumberInputChange}/>
                 {/*<span style={{marginLeft: "0.5rem"}}>db</span>*/}
-                <button  style={{margin:"0.25rem"}} onClick={() => dispatch(addCartItem({number: 1, item: params.cartItem.item}))}>+
+                <button  style={{margin:"0.25rem"}} onClick={() => dispatch(addCartItem({number: 1, ration: params.cartItem.ration, item: params.cartItem.item}))}>+
                 </button>
             </div>
-            <span>{params.cartItem.item.name}</span>
+            <span>{params.cartItem.ration === "kis adag" ? "Kis adag" : "Normál adag"} - {params.cartItem.item.name}</span>
             </div>
             <div>
                 <span style={{textWrap: "nowrap"}}>{params.cartItem.item.price * params.cartItem.number} {params.cartItem.item.currency === "HUF" ? "Ft" : ""}</span>

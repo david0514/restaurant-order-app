@@ -22,8 +22,8 @@ function Order() {
             >
                 Tovább a fizetéshez
             </button>
-            {cart.cart.map((cartItem) => <OrderItem cartItem={cartItem} key={cartItem.item.name}></OrderItem>)}
-
+            <div style={{marginBottom: "1rem"}}>Összesen: {cart.cart.reduce((acc, product) => acc + (product.item.price * product.number), 0)} Ft + 10% szervízdíj</div>
+            {cart.cart.map((cartItem) => <OrderItem cartItem={cartItem} key={cartItem.item.name+" - "+cartItem.ration}></OrderItem>)}
         </div>
     );
 }

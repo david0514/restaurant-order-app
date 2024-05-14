@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import './ItemNumberDialog.css';
 import {useNavigate} from "react-router-dom";
-import {addCartItem, Item} from "../../features/cartSlice";
+import {addCartItem, Item, setCartItemNumber} from "../../features/cartSlice";
 import {useAppDispatch} from "../../app/hooks";
 
-function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item }) {
+function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item, addOrSet?: "add" | "set" }) {
 
     const dispatch = useAppDispatch()
 
@@ -13,6 +13,7 @@ function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item }) {
     const navigate = useNavigate();
 
     const [numberValue, setNumberValue] = useState(1)
+    const [rationValue, setRationValue] = useState<"kis adag" | "normál adag">("normál adag")
 
     function handleNumberInputChange(event: any) {
         if (typeof event.target.value === 'number' && event.target.value > 0) {
@@ -23,24 +24,32 @@ function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item }) {
         }
     }
 
+    function handleRationInputChange(event: any) {
+        setRationValue(event.target.value)
+    }
+
     return (
         <div className="item-number-dialog-container">
             <div className="item-number-dialog">
                 <h2>Termék hozzáadása a rendeléshez</h2>
                 <div className="item-number-container">
                     <button
-                            onClick={() => numberValue > 1 && setNumberValue(numberValue - 1)}>–
+                        onClick={() => numberValue > 1 && setNumberValue(numberValue - 1)}>–
                     </button>
                     <input type="number" value={numberValue} onChange={handleNumberInputChange}/>
                     <span style={{marginLeft: "0.5rem"}}>db</span>
                     <button onClick={() => setNumberValue(numberValue + 1)}>+</button>
                 </div>
+                <select name="" id="" value={rationValue} onChange={handleRationInputChange}>
+                    <option value="normál adag">Normál adag</option>
+                    <option value="kis adag">Kis adag</option>
+                </select>
                 <div className="action-buttons-container">
                     <button
                         className="filled-button filled-button-dark"
                         onClick={() => {
-                                dispatch(addCartItem({number: numberValue, item: params.selectedItem}));
-                                close();
+                                dispatch(addCartItem({number: numberValue, ration: rationValue, item: params.selectedItem}));
+                            close();
                         }}
                     >
                         Hozzáadás és vásárlás folytatása
@@ -49,8 +58,8 @@ function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item }) {
                     <button
                         className="filled-button filled-button-dark"
                         onClick={() => {
-                                dispatch(addCartItem({number: numberValue, item: params.selectedItem}));
-                                navigate("/order", {replace: true});
+                                dispatch(addCartItem({number: numberValue, ration: rationValue, item: params.selectedItem}));
+                            navigate("/order", {replace: true});
                         }}
                     >
                         Hozzáadás és rendelés megtekintése

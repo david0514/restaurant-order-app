@@ -39,3 +39,12 @@
     display: flex;
     gap: 0.5rem;
 }
+
+.item-number-dialog-container select {
+    padding: 0.4rem 0.6rem;
+    border: none;
+    background-color: var(--card-background-color);
+    border-radius: 0.5rem;
+    appearance: none;
+    outline: none;
+}

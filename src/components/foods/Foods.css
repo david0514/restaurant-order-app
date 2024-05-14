@@ -1,4 +1,5 @@
 .foods-container {
+    position: relative;
     height: calc(100dvh - var(--top-bar-height));
     overflow: auto;
     display: grid;
@@ -22,6 +23,42 @@
     /*background-color: #61dafb;*/
     width: 2.5rem;
     height: 2.5rem;
+}
+
+.food-types-container .sort > img{
+    /*background-color: #61dafb;*/
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--menu-background-color);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 8px 32px 0 hsla(0, 0%, 0%, 0.1);
+    border: solid 1px hsla(0, 0%, 100%, 0.18);
+}
+
+.food-types-container .sort-dropdown{
+    position: absolute;
+    border-radius: 0.5rem;
+    background-color: hsla(36, 34%, 90%, 0.9);
+    box-shadow: 0 8px 32px 0 hsla(0, 0%, 0%, 0.2);
+    right: 0;
+    overflow: hidden;
+    height: 0;
+    transition: height 300ms;
+    cursor: default;
+}
+
+.food-types-container .sort-dropdown.open {
+    height: calc(6lh + (12 * 0.4rem));
+}
+
+.food-types-container .sort-dropdown div.selected {
+    background-color: hsla(0, 0%, 0%, 0.1);
+}
+
+.food-types-container .sort-dropdown div{
+   padding: 0.4rem 0.5rem;
 }
 
 .placeholder {

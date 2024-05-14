@@ -20,8 +20,10 @@ function Foods() {
         peanut: true,
         soy: true,
     })
+    const [sort, setSort] = useState("name-asc")
 
     const [isAlergensOpen, setIsAlergensOpen] = useState(false)
+    const [isSortOpen, setIsSortOpen] = useState(false)
     const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState<Item | undefined>(undefined)
 
     function handleDialogClose(){
@@ -68,8 +70,13 @@ function Foods() {
                         </button>
                     </div>
                     <div className="sort">
-                        <img src="/foods/sort-icon.svg"></img>
-                        <div className="sord-dr"></div>
+                        <img src="/foods/sort-icon.svg" onClick={()=>setIsSortOpen((prevState)=>!prevState)}></img>
+                        <div className={isSortOpen ? "sort-dropdown open" : "sort-dropdown"}>
+                            <div onClick={()=>{setSort("name-asc"); setIsSortOpen(false)}}  className={sort==="name-asc" ? "selected" : ""}>Név - növekvő</div>
+                            <div onClick={()=>{setSort("name-desc"); setIsSortOpen(false)}}  className={sort==="name-desc" ? "selected" : ""}>Név - csökkenő</div>
+                            <div onClick={()=>{setSort("price-asc"); setIsSortOpen(false)}}  className={sort==="price-asc" ? "selected" : ""}>Ár - növekvő</div>
+                            <div onClick={()=>{setSort("price-desc"); setIsSortOpen(false)}}  className={sort==="price-desc" ? "selected" : ""}>Ár - csökkenő</div>
+                        </div>
                     </div>
                 </div>
                 <div className="food-types-container" style={{justifyContent: "center"}}>
@@ -109,28 +116,28 @@ function Foods() {
                     </div>
                     <div className="dropdown">
                         <div>
-                            <input id="gluten-input" type="checkbox" checked={selectedAlergens.gluten} onClick={() => setSelectedAlergens({
+                            <input id="gluten-input" type="checkbox" checked={selectedAlergens.gluten} onChange={() => setSelectedAlergens({
                                 ...selectedAlergens,
                                 gluten: !selectedAlergens.gluten
                             })}/>
                             <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}>Glutén</label>
                         </div>
                         <div>
-                            <input id="laktoz-input" type="checkbox" checked={selectedAlergens.lactose} onClick={() => setSelectedAlergens({
+                            <input id="laktoz-input" type="checkbox" checked={selectedAlergens.lactose} onChange={() => setSelectedAlergens({
                                 ...selectedAlergens,
                                 lactose: !selectedAlergens.lactose
                             })}/>
                             <label htmlFor="laktoz-input" style={{marginLeft: "0.5rem"}}>Laktóz</label>
                         </div>
                         <div>
-                            <input id="mogyoro-input" type="checkbox"  checked={selectedAlergens.peanut} onClick={() => setSelectedAlergens({
+                            <input id="mogyoro-input" type="checkbox"  checked={selectedAlergens.peanut} onChange={() => setSelectedAlergens({
                                        ...selectedAlergens,
                                        peanut: !selectedAlergens.peanut
                                    })}/>
                             <label htmlFor="mogyoro-input" style={{marginLeft: "0.5rem"}}>Mogyoró</label>
                         </div>
                         <div>
-                            <input id="szoja-input" type="checkbox" checked={selectedAlergens.soy} onClick={() => setSelectedAlergens({
+                            <input id="szoja-input" type="checkbox" checked={selectedAlergens.soy} onChange={() => setSelectedAlergens({
                                 ...selectedAlergens,
                                 soy: !selectedAlergens.soy
                             })}/>
@@ -152,6 +159,23 @@ function Foods() {
                         (!selectedAlergens.peanut && item.contains.includes("PEANUT")) ||
                         (!selectedAlergens.soy && item.contains.includes("SOY"))
                     );
+                }).sort((a,b)=>{
+                    const [sortValue, sortDirection] = sort.split("-")
+                    if("name" === sortValue){
+                        if(sortDirection==="asc"){
+                            return a.name.toLowerCase().localeCompare(b.name.toLowerCase(), "hu")
+                        } else {
+                            return -a.name.toLowerCase().localeCompare(b.name.toLowerCase(), "hu")
+                        }
+                    }
+                    if("price" === sortValue){
+                        if(sortDirection==="asc"){
+                            return a.price-b.price
+                        } else {
+                            return b.price-a.price
+                        }
+                    }
+                    return 0
                 }).map((item) =>
                     <div key={item.name} className="card">
                         <div className="price">
