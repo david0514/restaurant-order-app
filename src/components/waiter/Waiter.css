@@ -1,0 +1,59 @@
+.waiter-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.call-button,
+.cancel-button {
+  background-color: #665c4d;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition: 0.3s;
+  border-radius: 0.5rem;
+}
+
+.call-button:hover,
+.cancel-button:hover {
+  background-color: #4e473b;
+}
+
+.spinner {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #665c4d;
+}
+
+.countdown-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 500px;
+}
+
+p {
+  text-align: center;
+}

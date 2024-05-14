@@ -33,14 +33,20 @@ function Menu() {
         </div>
       </div>
 
-      <div className="menu-line">
+      <div
+        className="menu-line"
+        onClick={() => navigate('/reserve', { replace: true })}
+      >
         <img className="menu-item-icon" src="/menu/chair-icon.svg" alt="" />
         <div className="menu-item-text">
-          <span>Hely foglalás</span>
+          <span>Helyfoglalás</span>
         </div>
       </div>
 
-      <div className="menu-line" onClick={() => navigate('/order', { replace: true })}>
+      <div
+        className="menu-line"
+        onClick={() => navigate('/order', { replace: true })}
+      >
         <img
           style={{ padding: '0.25rem' }}
           className="menu-item-icon"
@@ -54,7 +60,10 @@ function Menu() {
 
       <div
         className="menu-line"
-        onClick={() => {navigate("/", {replace: true});setIsOpened(false)}}
+        onClick={() => {
+          navigate('/', { replace: true });
+          setIsOpened(false);
+        }}
       >
         <img
           style={{ padding: '0.25rem' }}
@@ -67,7 +76,13 @@ function Menu() {
         </div>
       </div>
 
-      <div className="menu-line"  onClick={() => {navigate("/foods", {replace: true});setIsOpened(false)}}>
+      <div
+        className="menu-line"
+        onClick={() => {
+          navigate('/foods', { replace: true });
+          setIsOpened(false);
+        }}
+      >
         <img
           style={{ padding: '0.1rem' }}
           className="menu-item-icon"
@@ -79,7 +94,10 @@ function Menu() {
         </div>
       </div>
 
-      <div className="menu-line">
+      <div
+        className="menu-line"
+        onClick={() => navigate('/waiter', { replace: true })}
+      >
         <img
           style={{
             padding: '0.5rem',
