@@ -210,6 +210,60 @@ export const itemsData: Item[] = [
     },
 
 
+    // Előételek
+
+    {
+        "name": "Libamájpástétom lilahagyma lekvárral",
+        "shortDescription": "Ízletes libamájpástétom lilahagyma lekvárral, friss kenyérrel.",
+        "description": "Klasszikus libamájpástétom friss lilahagyma lekvárral és ropogós kenyérrel.",
+        "imageUrl": "/food-images/libamajpastetom.jpg",
+        "contains": ["GLUTEN"],
+        "price": 3750,
+        "tags": ["előétel"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Körözött friss kenyérrel",
+        "shortDescription": "Ízletes körözött friss kenyérrel.",
+        "description": "Friss kenyérre kenve, pikáns körözött sajt tejföllel, vöröshagymával és paprikával.",
+        "imageUrl": "/food-images/korozott.jpg",
+        "contains": ["GLUTEN", "LACTOSE"],
+        "price": 2550,
+        "tags": ["előétel"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Padlizsánkrém pirítóssal",
+        "shortDescription": "Ízletes padlizsánkrém pirítóssal.",
+        "description": "Padlizsánkrém friss pirítóssal és apróra vágott zöldségekkel.",
+        "imageUrl": "/food-images/padlizsankrem.jpg",
+        "contains": ["GLUTEN"],
+        "price": 2850,
+        "tags": ["előétel"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Kaszinótojás",
+        "shortDescription": "Kaszinótojás hagymás-sajtos bundában.",
+        "description": "Fűszeres hagymás-sajtos bundában sült tojás, tormamártással és friss kenyérrel.",
+        "imageUrl": "/food-images/kaszinotojas.jpg",
+        "contains": ["GLUTEN", "EGG", "LACTOSE"],
+        "price": 3450,
+        "tags": ["előétel"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Füstölt sonka tormával és friss kenyérrel",
+        "shortDescription": "Ízletes füstölt sonka tormával és friss kenyérrel.",
+        "description": "Vastagon szeltelt füstölt sonka, friss tormamával és kenyérrel.",
+        "imageUrl": "/food-images/fustolt-sonka.jpg",
+        "contains": ["GLUTEN", "LACTOSE"],
+        "price": 3150,
+        "tags": ["előétel"],
+        "currency": "HUF"
+    },
+
+
     // Halak
 
     {
@@ -219,7 +273,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/fogas-sult.jpg",
         "contains": [],
         "price": 4350,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -229,7 +283,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/ponty-paprikas.jpg",
         "contains": ["LACTOSE", "GLUTEN"],
         "price": 3750,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -239,7 +293,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/harcsapaprikas.jpg",
         "contains": ["LACTOSE", "GLUTEN"],
         "price": 3975,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -249,7 +303,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/rantott-harcsa.jpg",
         "contains": ["GLUTEN", "EGG"],
         "price": 3900,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -259,7 +313,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/lazac-steak.jpg",
         "contains": [],
         "price": 5025,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -269,7 +323,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/kecsege-rost.jpg",
         "contains": [],
         "price": 4575,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -279,7 +333,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/sullo-sult.jpg",
         "contains": [],
         "price": 4350,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -289,7 +343,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/pisztrang-fuszeresen.jpg",
         "contains": [],
         "price": 4275,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
         "currency": "HUF"
     },
     {
@@ -299,7 +353,151 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/harcsa-rost.jpg",
         "contains": [],
         "price": 4275,
-        "tags": ["főétel"],
+        "tags": ["főétel", "hal"],
+        "currency": "HUF"
+    },
+
+
+    // Italok
+
+    {
+        "name": "Tokaji aszú",
+        "shortDescription": "Édes, zamatos Tokaji aszú bor.",
+        "description": "Kiváló minőségű, édes Tokaji aszú bor.",
+        "imageUrl": "/food-images/tokaji-aszu.jpg",
+        "contains": ["ALCOHOL"],
+        "price": 7500,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Egri bikavér",
+        "shortDescription": "Testes, vörös Egri bikavér bor.",
+        "description": "Testes vörösbor, mely az Egri borvidékről származik.",
+        "imageUrl": "/food-images/egri-bikaver.jpg",
+        "contains": ["ALCOHOL"],
+        "price": 3500,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Unicum",
+        "shortDescription": "Keserű, gyógynövénylikőr.",
+        "description": "Keserű gyógynövénylikőr, amelyet a Zwack család receptje alapján készítenek.",
+        "imageUrl": "/food-images/unicum.jpg",
+        "contains": ["ALCOHOL"],
+        "price": 3800,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Pálinka",
+        "shortDescription": "Klasszikus magyar gyümölcspálinka.",
+        "description": "Kiváló minőségű magyar gyümölcspálinka, hagyományos módon párolva és érlelve.",
+        "imageUrl": "/food-images/palinka.jpg",
+        "contains": ["ALCOHOL"],
+        "price": 2500,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Jägermeister",
+        "shortDescription": "Fűszeres, gyógynövénylikőr.",
+        "description": "Fűszeres gyógynövénylikőr, mely több mint 50 különféle növényt tartalmaz.",
+        "imageUrl": "/food-images/jagermeister.jpg",
+        "contains": ["ALCOHOL"],
+        "price": 4000,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Szódavíz",
+        "shortDescription": "Frissítő szódavíz.",
+        "description": "Frissítő, szénsavas szódavíz.",
+        "imageUrl": "/food-images/szodaviz.jpg",
+        "contains": [],
+        "price": 450,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Házi limonádé (citrus, málna, bodza)",
+        "shortDescription": "Friss házi limonádé málna és bodza ízzel.",
+        "description": "Frissítő házi limonádé friss málnával és bodzával.",
+        "imageUrl": "/food-images/hazi-limonade.jpg",
+        "contains": [],
+        "price": 900,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Gyümölcslé (alma, narancs, barack)",
+        "shortDescription": "Friss gyümölcslevek.",
+        "description": "Frissen facsart gyümölcslevek különböző ízekben: alma, narancs, barack.",
+        "imageUrl": "/food-images/gyumolcsle.jpg",
+        "contains": [],
+        "price": 900,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Ásványvíz",
+        "shortDescription": "Frissítő ásványvíz.",
+        "description": "Természetes ásványvíz, frissen szűrve.",
+        "imageUrl": "/food-images/asvanyviz.jpg",
+        "contains": [],
+        "price": 550,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Kávé",
+        "shortDescription": "Frissen őrölt kávé.",
+        "description": "Frissen őrölt kávé, ízlés szerint cukorral vagy tejjel.",
+        "imageUrl": "/food-images/kave.jpg",
+        "contains": [],
+        "price": 750,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Jegestea",
+        "shortDescription": "Frissítő jegestea.",
+        "description": "Frissen főzött jegestea, citrommal és cukorral.",
+        "imageUrl": "/food-images/jegestea.jpg",
+        "contains": [],
+        "price": 750,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Coca Cola",
+        "shortDescription": "Frissítő Coca Cola.",
+        "description": "Friss Coca Cola, jéggel és citromkarikával.",
+        "imageUrl": "/food-images/coca-cola.jpg",
+        "contains": [],
+        "price": 750,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Sprite",
+        "shortDescription": "Frissítő Sprite.",
+        "description": "Friss Sprite, jéggel és citromkarikával.",
+        "imageUrl": "/food-images/sprite.jpg",
+        "contains": [],
+        "price": 750,
+        "tags": ["ital"],
+        "currency": "HUF"
+    },
+    {
+        "name": "Tonic",
+        "shortDescription": "Frissítő tonic.",
+        "description": "Friss tonic, jéggel és citromkarikával.",
+        "imageUrl": "/food-images/tonic.jpg",
+        "contains": [],
+        "price": 750,
+        "tags": ["ital"],
         "currency": "HUF"
     },
 
@@ -314,7 +512,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/petrezselymes-burgonya.jpg",
         "contains": [],
         "price": 1500,
-        "tags": ["főétel"],
+        "tags": ["főétel", "köret"],
         "currency": "HUF"
     },
     {
@@ -324,7 +522,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/tarhonya.jpg",
         "contains": ["GLUTEN"],
         "price": 1500,
-        "tags": ["főétel"],
+        "tags": ["főétel", "köret"],
         "currency": "HUF"
     },
     {
@@ -334,7 +532,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/parolt-rizs.jpg",
         "contains": [],
         "price": 1350,
-        "tags": ["főétel"],
+        "tags": ["főétel", "köret"],
         "currency": "HUF"
     },
     {
@@ -344,7 +542,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/burgonyafank.jpg",
         "contains": ["GLUTEN", "EGG", "LACTOSE"],
         "price": 1650,
-        "tags": ["főétel"],
+        "tags": ["főétel", "köret"],
         "currency": "HUF"
     },
     {
@@ -354,7 +552,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/sult-krumpli.jpg",
         "contains": [],
         "price": 1500,
-        "tags": ["főétel"],
+        "tags": ["főétel", "köret"],
         "currency": "HUF"
     },
 
@@ -378,7 +576,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/halaszle.jpg",
         "contains": ["GLUTEN"],
         "price": 3600,
-        "tags": ["leves"],
+        "tags": ["leves", "hal"],
         "currency": "HUF"
     },
     {
@@ -472,7 +670,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/kaposztasalata.jpg",
         "contains": [],
         "price": 1200,
-        "tags": ["főétel"],
+        "tags": ["főétel", "saláta"],
         "currency": "HUF"
     },
     {
@@ -482,7 +680,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/uborkasalata.jpg",
         "contains": [],
         "price": 1200,
-        "tags": ["főétel"],
+        "tags": ["főétel", "saláta"],
         "currency": "HUF"
     },
     {
@@ -492,7 +690,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/paradicsomsalata.jpg",
         "contains": [],
         "price": 1300,
-        "tags": ["főétel"],
+        "tags": ["főétel", "saláta"],
         "currency": "HUF"
     },
     {
@@ -502,7 +700,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/cezar-salata.jpg",
         "contains": ["GLUTEN", "EGG", "LACTOSE"],
         "price": 3150,
-        "tags": ["főétel"],
+        "tags": ["főétel", "saláta"],
         "currency": "HUF"
     },
     {
@@ -512,7 +710,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/vegyes-salata.jpg",
         "contains": [],
         "price": 1500,
-        "tags": ["főétel"],
+        "tags": ["főétel", "saláta"],
         "currency": "HUF"
     },
 
@@ -526,7 +724,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/rantott-csirke.jpg",
         "contains": ["GLUTEN", "EGG"],
         "price": 3750,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -536,7 +734,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/paprikas-csirke.jpg",
         "contains": ["LACTOSE", "GLUTEN"],
         "price": 3375,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -546,7 +744,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/toltott-csirkecomb.jpg",
         "contains": ["GLUTEN", "EGG"],
         "price": 3525,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -556,7 +754,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/libamaj.jpg",
         "contains": ["GLUTEN"],
         "price": 6375,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -566,7 +764,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/kacsasult.jpg",
         "contains": [],
         "price": 5175,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -576,7 +774,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/csirkeporkolt.jpg",
         "contains": ["GLUTEN"],
         "price": 3525,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -586,7 +784,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/pulyka-ragu.jpg",
         "contains": ["GLUTEN"],
         "price": 3525,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -596,7 +794,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/kakas-porkolt.jpg",
         "contains": [],
         "price": 3900,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -606,7 +804,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/grillezett-csirkemell.jpg",
         "contains": [],
         "price": 3375,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
     {
@@ -616,7 +814,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/csirke-brassoi.jpg",
         "contains": ["GLUTEN"],
         "price": 3450,
-        "tags": ["főétel"],
+        "tags": ["főétel", "szárnyas"],
         "currency": "HUF"
     },
 
@@ -630,7 +828,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/szarvasporkolt.jpg",
         "contains": [],
         "price": 4875,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vad"],
         "currency": "HUF"
     },
     {
@@ -640,7 +838,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/vaddiszno-ragu.jpg",
         "contains": [],
         "price": 4500,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vad"],
         "currency": "HUF"
     },
     {
@@ -650,7 +848,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/facanleves.jpg",
         "contains": ["GLUTEN"],
         "price": 3000,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vad"],
         "currency": "HUF"
     },
     {
@@ -660,7 +858,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/nyulragu.jpg",
         "contains": [],
         "price": 4200,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vad"],
         "currency": "HUF"
     },
     {
@@ -670,7 +868,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/vadkacsa-sult.jpg",
         "contains": [],
         "price": 5250,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vad"],
         "currency": "HUF"
     },
 
@@ -685,7 +883,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/rakott-zoldsegek.jpg",
         "contains": ["GLUTEN", "LACTOSE"],
         "price": 3150,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vega"],
         "currency": "HUF"
     },
     {
@@ -695,7 +893,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/toltott-paprika-rizses.jpg",
         "contains": ["GLUTEN"],
         "price": 2850,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vega"],
         "currency": "HUF"
     },
     {
@@ -705,7 +903,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/gombapaprikas.jpg",
         "contains": ["GLUTEN", "LACTOSE"],
         "price": 3000,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vega"],
         "currency": "HUF"
     },
     {
@@ -715,7 +913,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/tocsni-zoldseges.jpg",
         "contains": ["GLUTEN", "EGG", "LACTOSE"],
         "price": 2700,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vega"],
         "currency": "HUF"
     },
     {
@@ -725,7 +923,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/sutotokos-bulgur.jpg",
         "contains": [],
         "price": 3000,
-        "tags": ["főétel"],
+        "tags": ["főétel", "vega"],
         "currency": "HUF"
     }
 
