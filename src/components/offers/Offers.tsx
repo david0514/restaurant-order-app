@@ -1,10 +1,35 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import './Offers.css';
 import ItemNumberDialog from "../item-number-dialog/ItemNumberDialog";
 import {itemsData} from "../../itemsData";
 import {Item} from "../../features/cartSlice";
+import {useListSuggestedItemsMutation} from "../../features/apiSlice";
 
 function Offers() {
+
+    const [listSuggestedItems, listSuggestedItemsResult] = useListSuggestedItemsMutation()
+
+    const sync = useRef<boolean>(false)
+
+    useEffect(() => {
+        if (!sync.current){
+            sync.current = true
+            listSuggestedItems({
+                model: "gpt-3.5-turbo",
+                response_format: {type: "json_object"},
+                messages: [
+                    {"role": "system", "content": "Te egy segítőkész aszisztens vagy aki segít ajánlást összeállítani étel listából JSON kimenettel."},
+                    {"role": "user", "content": `Az alábbi ételekből válassz ki tizet véletlenszerűen, úgy hogy változatos legyen az ajánlás: ${itemsData.map((item)=>item.name).join(", ")}\nFormátom: {etelek: ["étel1", "étel2"...]}`}
+                ]
+            }).then((result)=>{
+                console.log(result.data)
+                const message = result.data?.choices[0].message.content
+                if(message){
+                    console.log(JSON.parse(message))
+                }
+            })
+        }
+    }, []);
 
     const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState<Item | undefined>(undefined)
 
@@ -31,7 +56,14 @@ function Offers() {
                 <div className="subtitle">Válasszon kedvező ajánlataink közül!</div>
             </div>
             <div className="card-container">
-                {itemsData.map((item) =>
+                {itemsData.filter((item)=>{
+                    const message = listSuggestedItemsResult.data?.choices[0].message.content
+                    if(message){
+                        const messageJson: {etelek: string[]} = JSON.parse(message)
+                        return messageJson.etelek.map((etel)=>etel.toLowerCase()).includes(item.name.toLowerCase())
+                    }
+                    return false
+                }).map((item) =>
                     <div key={item.name} className="card">
                         <div className="price">
                             <img style={{width: "1.2lh", height: "1.2lh", marginRight: "0.2lh", visibility: "hidden"}}
