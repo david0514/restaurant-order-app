@@ -14,6 +14,7 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import Reserve from './components/reserve/Reserve';
 import Waiter from './components/waiter/Waiter';
+import AboutUs from "./components/about-us/AboutUs";
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -54,6 +55,10 @@ const router = createBrowserRouter([
       {
         path: 'waiter',
         element: <Waiter />,
+      },
+      {
+        path: 'about-us',
+        element: <AboutUs />,
       },
     ],
   },

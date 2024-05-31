@@ -115,7 +115,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/porkolt-marha-diszno.jpg",
         "contains": [],
         "price": 3675,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -125,7 +125,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/sertessult.jpg",
         "contains": [],
         "price": 3825,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -135,7 +135,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/csulok-pekne-modra.jpg",
         "contains": [],
         "price": 4500,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -145,7 +145,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/vadas-marha.jpg",
         "contains": ["GLUTEN"],
         "price": 4275,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -155,7 +155,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/rakott-krumpli-kolbasszal.jpg",
         "contains": ["GLUTEN", "EGG", "LACTOSE"],
         "price": 3300,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -165,7 +165,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/ciganypecsenye.jpg",
         "contains": [],
         "price": 3900,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -175,7 +175,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/fott-csulok.jpg",
         "contains": ["GLUTEN"],
         "price": 3600,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -185,7 +185,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/porkolt-marha-diszno.jpg",
         "contains": [],
         "price": 3525,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -195,7 +195,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/sult-tarja.jpg",
         "contains": [],
         "price": 3675,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -205,7 +205,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/toltott-kaposzta.jpg",
         "contains": ["GLUTEN", "LACTOSE"],
         "price": 3600,
-        "tags": ["főétel"],
+        "tags": ["főétel","egyéb húsok"],
         "currency": "HUF"
     },
 
@@ -367,7 +367,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/tokaji-aszu.jpg",
         "contains": ["ALCOHOL"],
         "price": 7500,
-        "tags": ["ital"],
+        "tags": ["alkoholos ital"],
         "currency": "HUF"
     },
     {
@@ -377,7 +377,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/egri-bikaver.jpg",
         "contains": ["ALCOHOL"],
         "price": 3500,
-        "tags": ["ital"],
+        "tags": ["alkoholos ital"],
         "currency": "HUF"
     },
     {
@@ -387,7 +387,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/unicum.jpg",
         "contains": ["ALCOHOL"],
         "price": 3800,
-        "tags": ["ital"],
+        "tags": ["alkoholos ital"],
         "currency": "HUF"
     },
     {
@@ -397,7 +397,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/palinka.jpg",
         "contains": ["ALCOHOL"],
         "price": 2500,
-        "tags": ["ital"],
+        "tags": ["alkoholos ital"],
         "currency": "HUF"
     },
     {
@@ -407,7 +407,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/jagermeister.jpg",
         "contains": ["ALCOHOL"],
         "price": 4000,
-        "tags": ["ital"],
+        "tags": ["alkoholos ital"],
         "currency": "HUF"
     },
     {
@@ -417,7 +417,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/szodaviz.jpg",
         "contains": [],
         "price": 450,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -427,7 +427,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/hazi-limonade.jpg",
         "contains": [],
         "price": 900,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -437,7 +437,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/gyumolcsle.jpg",
         "contains": [],
         "price": 900,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -447,7 +447,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/asvanyviz.jpg",
         "contains": [],
         "price": 550,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -457,7 +457,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/kave.jpg",
         "contains": [],
         "price": 750,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -467,7 +467,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/jegestea.jpg",
         "contains": [],
         "price": 750,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -477,7 +477,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/coca-cola.jpg",
         "contains": [],
         "price": 750,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -487,7 +487,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/sprite.jpg",
         "contains": [],
         "price": 750,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
     {
@@ -497,7 +497,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/tonic.jpg",
         "contains": [],
         "price": 750,
-        "tags": ["ital"],
+        "tags": ["alkoholmentes ital"],
         "currency": "HUF"
     },
 
@@ -828,7 +828,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/szarvasporkolt.jpg",
         "contains": [],
         "price": 4875,
-        "tags": ["főétel", "vad"],
+        "tags": ["főétel", "vad","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -838,7 +838,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/vaddiszno-ragu.jpg",
         "contains": [],
         "price": 4500,
-        "tags": ["főétel", "vad"],
+        "tags": ["főétel", "vad","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -848,7 +848,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/facanleves.jpg",
         "contains": ["GLUTEN"],
         "price": 3000,
-        "tags": ["főétel", "vad"],
+        "tags": ["vad","szárnyas", "leves"], // "főétel"
         "currency": "HUF"
     },
     {
@@ -858,7 +858,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/nyulragu.jpg",
         "contains": [],
         "price": 4200,
-        "tags": ["főétel", "vad"],
+        "tags": ["főétel", "vad","egyéb húsok"],
         "currency": "HUF"
     },
     {
@@ -868,7 +868,7 @@ export const itemsData: Item[] = [
         "imageUrl": "/food-images/vadkacsa-sult.jpg",
         "contains": [],
         "price": 5250,
-        "tags": ["főétel", "vad"],
+        "tags": ["főétel", "vad","szárnyas"],
         "currency": "HUF"
     },
 

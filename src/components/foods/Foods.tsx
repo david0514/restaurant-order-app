@@ -3,15 +3,26 @@ import './Foods.css';
 import ItemNumberDialog from "../item-number-dialog/ItemNumberDialog";
 import {itemsData} from "../../itemsData";
 import {Item} from "../../features/cartSlice";
+import ItemDetailsDialog from "../item-details-dialog/ItemDetailsDialog";
 
 function Foods() {
 
     const [selectedFoodTypes, setSelectedFoodTypes] = useState({
         eloetel: false,
         leves: false,
+
         foetel: false,
         desszert: false,
-        ital: false,
+        koret: false,
+
+        hal: false,
+        szarnyas: false,
+        egyebHusok: false,
+
+        alkoholosItal: false,
+        alkoholMentesItal: false,
+
+        vega: false
     })
 
     const [selectedAlergens, setSelectedAlergens] = useState({
@@ -25,6 +36,7 @@ function Foods() {
     const [isAlergensOpen, setIsAlergensOpen] = useState(false)
     const [isSortOpen, setIsSortOpen] = useState(false)
     const [isItemNumberDialogOpen, setIsItemNumberDialogOpen] = useState<Item | undefined>(undefined)
+    const [isItemDetailsDialogOpen, setIsItemDetailsDialogOpen] = useState<Item | undefined>(undefined)
 
     function handleDialogClose(){
         setIsItemNumberDialogOpen(undefined)
@@ -32,6 +44,19 @@ function Foods() {
 
     function handleDialogOpen(item: Item){
         setIsItemNumberDialogOpen(item)
+    }
+
+    function handleDetailsDialogOpen(item: Item){
+        setIsItemDetailsDialogOpen(item)
+    }
+
+    function handleDetailsDialogClose(add?: Item){
+
+        if (add){
+            handleDialogOpen(add)
+        } else {
+            setIsItemDetailsDialogOpen(undefined)
+        }
     }
 
     const speak = (text: string) => {
@@ -90,6 +115,15 @@ function Foods() {
                         Főétel
                     </button>
                     <button
+                        className={selectedFoodTypes.koret ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        onClick={() => setSelectedFoodTypes({
+                            ...selectedFoodTypes,
+                            koret: !selectedFoodTypes.koret
+                        })}
+                    >
+                        Köret
+                    </button>
+                    <button
                         className={selectedFoodTypes.desszert ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
                         onClick={() => setSelectedFoodTypes({
                             ...selectedFoodTypes,
@@ -98,16 +132,70 @@ function Foods() {
                     >
                         Desszert
                     </button>
+
+                </div>
+                <div className="food-types-container" style={{justifyContent: "center"}}>
                     <button
-                        className={selectedFoodTypes.ital ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        className={selectedFoodTypes.szarnyas ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
                         onClick={() => setSelectedFoodTypes({
                             ...selectedFoodTypes,
-                            ital: !selectedFoodTypes.ital
+                            szarnyas: !selectedFoodTypes.szarnyas
                         })}
                     >
-                        Ital
+                        Szárnyasok
+                    </button>
+                    <button
+                        className={selectedFoodTypes.hal ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        onClick={() => setSelectedFoodTypes({
+                            ...selectedFoodTypes,
+                            hal: !selectedFoodTypes.hal
+                        })}
+                    >
+                        Hal
+                    </button>
+                    <button
+                        className={selectedFoodTypes.egyebHusok ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        onClick={() => setSelectedFoodTypes({
+                            ...selectedFoodTypes,
+                            egyebHusok: !selectedFoodTypes.egyebHusok
+                        })}
+                    >
+                        Egyéb húsok
+                    </button>
+
+                </div>
+                <div className="food-types-container" style={{justifyContent: "center"}}>
+                    <button
+                        className={selectedFoodTypes.alkoholosItal ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        onClick={() => setSelectedFoodTypes({
+                            ...selectedFoodTypes,
+                            alkoholosItal: !selectedFoodTypes.alkoholosItal
+                        })}
+                    >
+                        Alkoholos ital
+                    </button>
+                    <button
+                        className={selectedFoodTypes.alkoholMentesItal ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        onClick={() => setSelectedFoodTypes({
+                            ...selectedFoodTypes,
+                            alkoholMentesItal: !selectedFoodTypes.alkoholMentesItal
+                        })}
+                    >
+                        Alkoholmentes ital
                     </button>
                 </div>
+                <div className="food-types-container" style={{justifyContent: "center"}}>
+                    <button
+                        className={selectedFoodTypes.vega ? "filled-button filled-button-dark food-type" : "outline-button outline-button-dark food-type"}
+                        onClick={() => setSelectedFoodTypes({
+                            ...selectedFoodTypes,
+                            vega: !selectedFoodTypes.vega
+                        })}
+                    >
+                        Vegetáriánus
+                    </button>
+                </div>
+
                 <div className={isAlergensOpen ? "allergens-container open" : "allergens-container"}>
                     <div className="allergens-title" onClick={() => setIsAlergensOpen(!isAlergensOpen)}>
                         Allergén információk
@@ -120,40 +208,54 @@ function Foods() {
                                 ...selectedAlergens,
                                 gluten: !selectedAlergens.gluten
                             })}/>
-                            <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}>Glutén</label>
+                            <label htmlFor="gluten-input" style={{marginLeft: "0.5rem"}}><img src="/common/gluten-ikon.svg" style={{width: "1.7rem",height: "1.7rem",margin: "-0.15rem"}} alt=""/><span>Glutén</span></label>
                         </div>
                         <div>
-                            <input id="laktoz-input" type="checkbox" checked={selectedAlergens.lactose} onChange={() => setSelectedAlergens({
+                        <input id="laktoz-input" type="checkbox" checked={selectedAlergens.lactose} onChange={() => setSelectedAlergens({
                                 ...selectedAlergens,
                                 lactose: !selectedAlergens.lactose
                             })}/>
-                            <label htmlFor="laktoz-input" style={{marginLeft: "0.5rem"}}>Laktóz</label>
+                            <label htmlFor="laktoz-input" style={{marginLeft: "0.5rem"}}><img src="/common/laktoz-ikon.svg" style={{width: "2.1rem",height: "2.1rem",margin: "-0.35rem"}} alt=""/><span>Laktóz</span></label>
                         </div>
                         <div>
                             <input id="mogyoro-input" type="checkbox"  checked={selectedAlergens.peanut} onChange={() => setSelectedAlergens({
                                        ...selectedAlergens,
                                        peanut: !selectedAlergens.peanut
                                    })}/>
-                            <label htmlFor="mogyoro-input" style={{marginLeft: "0.5rem"}}>Mogyoró</label>
+                            <label htmlFor="mogyoro-input" style={{marginLeft: "0.5rem"}}><img src="/common/mogyoro-ikon.svg" style={{width: "1.4rem",height: "1.4rem",padding: "0.05rem"}} alt=""/><span>Mogyoró</span></label>
                         </div>
                         <div>
-                            <input id="szoja-input" type="checkbox" checked={selectedAlergens.soy} onChange={() => setSelectedAlergens({
+                        <input id="szoja-input" type="checkbox" checked={selectedAlergens.soy} onChange={() => setSelectedAlergens({
                                 ...selectedAlergens,
                                 soy: !selectedAlergens.soy
                             })}/>
-                            <label htmlFor="szoja-input" style={{marginLeft: "0.5rem"}}>Szója</label>
+                            <label htmlFor="szoja-input" style={{marginLeft: "0.5rem"}}><img src="/common/szoja-ikon.png" style={{width: "1.4rem",height: "1.4rem",padding: "0.1rem"}} alt=""/><span>Szója</span></label>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="card-container">
                 {itemsData.filter(item=> {
-                    return !(
-                        (selectedFoodTypes.eloetel && !item.tags.includes("előétel")) ||
-                        (selectedFoodTypes.leves && !item.tags.includes("leves")) ||
-                        (selectedFoodTypes.foetel && !item.tags.includes("főétel")) ||
-                        (selectedFoodTypes.desszert && !item.tags.includes("desszert")) ||
-                        (selectedFoodTypes.ital && !item.tags.includes("ital")) ||
+                    return (
+                            (selectedFoodTypes.eloetel && item.tags.includes("előétel")) ||
+                            (selectedFoodTypes.leves && item.tags.includes("leves")) ||
+
+                            (selectedFoodTypes.foetel && item.tags.includes("főétel")) ||
+                            (selectedFoodTypes.desszert && item.tags.includes("desszert")) ||
+                            (selectedFoodTypes.koret && item.tags.includes("köret")) ||
+
+                            (selectedFoodTypes.szarnyas && item.tags.includes("szárnyas")) ||
+                            (selectedFoodTypes.hal && item.tags.includes("hal")) ||
+                            (selectedFoodTypes.egyebHusok && item.tags.includes("egyéb húsok")) ||
+
+                            (selectedFoodTypes.alkoholosItal && item.tags.includes("alkoholos ital")) ||
+                            (selectedFoodTypes.alkoholMentesItal && item.tags.includes("alkoholmentes ital")) ||
+
+                            (selectedFoodTypes.vega && item.tags.includes("vega")) ||
+
+                            (!selectedFoodTypes.eloetel && !selectedFoodTypes.leves && !selectedFoodTypes.foetel && !selectedFoodTypes.desszert && !selectedFoodTypes.koret && !selectedFoodTypes.szarnyas && !selectedFoodTypes.hal && !selectedFoodTypes.egyebHusok && !selectedFoodTypes.alkoholosItal && !selectedFoodTypes.alkoholMentesItal && !selectedFoodTypes.vega)
+                        )
+                        && !(
                         (!selectedAlergens.gluten && item.contains.includes("GLUTEN")) ||
                         (!selectedAlergens.lactose && item.contains.includes("LACTOSE")) ||
                         (!selectedAlergens.peanut && item.contains.includes("PEANUT")) ||
@@ -177,11 +279,11 @@ function Foods() {
                     }
                     return 0
                 }).map((item) =>
-                    <div key={item.name} className="card">
+                    <div key={item.name} className="card" onClick={()=>handleDetailsDialogOpen(item)}>
                         <div className="price">
                             <img style={{width: "1.2lh", height: "1.2lh", marginRight:"0.2lh", visibility: "hidden"}} src="/common/sound-icon.svg" alt=""/>
                             <span>{item.price} {item.currency === "HUF" ? "Ft" : ""}</span>
-                            <img style={{width: "1.2lh", height: "1.2lh", marginRight:"0.2lh"}} src="/common/sound-icon.svg" alt="" onClick={()=>speak(item.shortDescription ?? "")}/>
+                            <img style={{width: "1.2lh", height: "1.2lh", marginRight:"0.2lh"}} src="/common/sound-icon.svg" alt="" onClick={(e)=>{speak(item.shortDescription ?? ""); e.stopPropagation()}}/>
                         </div>
                         <img className="image" src={item.imageUrl} alt=""/>
                         <span className="name">{item.name}</span>
@@ -192,11 +294,12 @@ function Foods() {
                             {item.contains.includes("PEANUT") && <img src="/common/mogyoro-ikon.svg" style={{padding: "0.35rem"}} alt=""/>}
                             {item.contains.includes("SOY") && <img src="/common/szoja-ikon.png" style={{padding: "0.35rem"}} alt=""/>}
                         </span>
-                        <button className="add-button" onClick={()=>handleDialogOpen(item)}>+</button>
+                        <button className="add-button" onClick={(e)=>{handleDialogOpen(item); e.stopPropagation()}}>+</button>
                     </div>
                 )}
             </div>
             {isItemNumberDialogOpen && <ItemNumberDialog selectedItem={isItemNumberDialogOpen} onClose={handleDialogClose}/>}
+            {isItemDetailsDialogOpen && <ItemDetailsDialog selectedItem={isItemDetailsDialogOpen} onClose={handleDetailsDialogClose}/>}
         </div>
     );
 }

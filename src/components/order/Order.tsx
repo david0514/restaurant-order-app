@@ -15,7 +15,7 @@ function Order() {
 
     return (
         <div className="order-container">
-            <div className="title">Rendelés</div>
+            <div className="title">Kosár</div>
             <button
                 style={{marginBottom: "1rem"}}
                 className="filled-button filled-button-dark"

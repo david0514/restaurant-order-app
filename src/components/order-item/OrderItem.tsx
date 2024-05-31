@@ -3,7 +3,7 @@ import './OrderItem.css';
 import {useAppDispatch} from "../../app/hooks";
 import {addCartItem, Item, removeCartItem, setCartItemNumber} from "../../features/cartSlice";
 
-function OrderItem(params: { cartItem: { number: number, ration: "kis adag" | "normál adag", item: Item } }) {
+function OrderItem(params: { cartItem: { number: number, ration: "kis adag" | "normál adag" | "nagy adag", item: Item } }) {
     const dispatch = useAppDispatch()
 
 
@@ -31,7 +31,7 @@ function OrderItem(params: { cartItem: { number: number, ration: "kis adag" | "n
                 <button  style={{margin:"0.25rem"}} onClick={() => dispatch(addCartItem({number: 1, ration: params.cartItem.ration, item: params.cartItem.item}))}>+
                 </button>
             </div>
-            <span>{params.cartItem.ration === "kis adag" ? "Kis adag" : "Normál adag"} - {params.cartItem.item.name}</span>
+            <span>{params.cartItem.ration === "kis adag" ? "Kis adag" : (params.cartItem.ration === "nagy adag" ? "Nagy adag" : "Normál adag")} - {params.cartItem.item.name}</span>
             </div>
             <div>
                 <span style={{textWrap: "nowrap"}}>{params.cartItem.item.price * params.cartItem.number} {params.cartItem.item.currency === "HUF" ? "Ft" : ""}</span>

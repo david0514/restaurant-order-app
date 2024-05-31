@@ -150,7 +150,7 @@ const Reserve: React.FC = () => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="contact">Elérhetőség:</label>
+                <label htmlFor="contact">Email cím:</label>
                 <input
                   type="text"
                   id="contact"

@@ -1,0 +1,62 @@
+.item-details-dialog-container {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsla(0, 0%, 0%, 0.7);
+}
+
+.item-details-dialog {
+    width: 28rem;
+    height: 40rem;
+    max-width: calc(100% - 1rem);
+    max-height: calc(100% - 1rem);
+    background-color: hsla(36, 30%, 85%, 1);
+    border-radius: 0.5rem;
+
+    display: grid;
+    justify-items: center;
+    align-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.item-details-container {
+    overflow: auto;
+    width: 100%;
+
+    text-align: center;
+}
+
+.item-details-dialog .price {
+    font-size: 1.2rem;
+    padding-bottom: 0.5rem;
+}
+
+.item-details-dialog .rate div{
+    display: flex;
+    align-items: center;
+}
+.item-details-dialog .rate {
+    gap: 0.5rem
+}
+
+.item-details-dialog h2 {
+    margin: 0.5rem;
+    padding: 0;
+}
+
+.action-buttons-container {
+    text-align: center;
+}
+
+.action-buttons-container button {
+    margin: 0.3rem;
+    min-width: 16rem;
+}
+
+.action-buttons-container div {
+    display: flex;
+    gap: 0.5rem;
+}

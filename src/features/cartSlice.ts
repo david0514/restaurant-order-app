@@ -12,7 +12,7 @@ export interface Item {
 }
 
 export interface CartState {
-    cart: {number: number, ration: "kis adag" | "normál adag", item: Item}[]
+    cart: {number: number, ration: "kis adag" | "normál adag" | "nagy adag", item: Item}[]
 }
 
 const initialState: CartState = {
@@ -23,7 +23,7 @@ const cartSlice = createSlice({
     name: "cart",
     initialState,
     reducers: {
-        addCartItem(state, action: PayloadAction<{number?: number, ration: "kis adag" | "normál adag", item: Item}>) {
+        addCartItem(state, action: PayloadAction<{number?: number, ration: "kis adag" | "normál adag" | "nagy adag", item: Item}>) {
             const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name && cartItem.ration === action.payload.ration)
             if (selectedCartItem !== undefined) {
                 selectedCartItem.number += action.payload.number !== undefined ? action.payload.number : 1
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
                 state.cart.push({number: action.payload.number !== undefined ? action.payload.number : 1, ration: action.payload.ration,  item: action.payload.item})
             }
         },
-        removeCartItem(state, action: PayloadAction<{item: Item, ration: "kis adag" | "normál adag"}>) {
+        removeCartItem(state, action: PayloadAction<{item: Item, ration: "kis adag" | "normál adag" | "nagy adag"}>) {
             const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name && cartItem.ration === action.payload.ration)
             if (selectedCartItem !== undefined) {
                 selectedCartItem.number--
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
                 }
             }
         },
-        setCartItemNumber(state, action: PayloadAction<{number: number, ration: "kis adag" | "normál adag", item: Item}>) {
+        setCartItemNumber(state, action: PayloadAction<{number: number, ration: "kis adag" | "normál adag" | "nagy adag", item: Item}>) {
             const selectedCartItem = state.cart.find((cartItem) => cartItem.item.name === action.payload.item.name && cartItem.ration === action.payload.ration)
             if (selectedCartItem !== undefined) {
                 selectedCartItem.number = action.payload.number

@@ -13,7 +13,7 @@ function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item, add
     const navigate = useNavigate();
 
     const [numberValue, setNumberValue] = useState(1)
-    const [rationValue, setRationValue] = useState<"kis adag" | "normál adag">("normál adag")
+    const [rationValue, setRationValue] = useState<"kis adag" | "normál adag" | "nagy adag" >("normál adag")
 
     function handleNumberInputChange(event: any) {
         if (typeof event.target.value === 'number' && event.target.value > 0) {
@@ -43,6 +43,7 @@ function ItemNumberDialog(params: { onClose: () => void, selectedItem: Item, add
                 <select name="" id="" value={rationValue} onChange={handleRationInputChange}>
                     <option value="normál adag">Normál adag</option>
                     <option value="kis adag">Kis adag</option>
+                    <option value="nagy adag">Nagy adag</option>
                 </select>
                 <div className="action-buttons-container">
                     <button

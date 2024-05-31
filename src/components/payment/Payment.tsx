@@ -83,7 +83,7 @@ function Payment() {
       <div className="products-list">
         {cart.cart.map((product) => (
           <div key={product.item.name} className="product-row">
-            <div className="product-column">{product.ration === "kis adag" ? "Kis adag" : "Normál adag"} - {product.item.name}</div>
+            <div className="product-column">{product.ration === "kis adag" ? "Kis adag" : (product.ration === "nagy adag" ? "Nagy adag" : "Normál adag")} - {product.item.name}</div>
             <div className="product-column">{product.number} db</div>
             <div className="product-column">{product.item.price * product.number} Ft</div>
             {/*<div className="product-column">*/}

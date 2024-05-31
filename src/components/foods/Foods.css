@@ -106,6 +106,12 @@
     height: 1lh;
 }
 
+.allergens-container label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 .allergens-container .arrow-icon {
     width: 1lh;
     height: 1lh;
