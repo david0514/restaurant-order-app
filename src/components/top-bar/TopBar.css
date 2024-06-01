@@ -10,6 +10,7 @@
 
     background-color: var(--primary-color);
     color: var(--text-light-color);
+    cursor: default;
 }
 
 .top-bar-container > div{
